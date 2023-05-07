@@ -34,6 +34,7 @@ export default () => {
     email: '',
     nickname: '',
     times: 0,
+    word: 0,
     token: '',
   })
 
@@ -260,13 +261,13 @@ export default () => {
       <div>
         <Show when={!isLogin()}>
           <p mt-1 op-60>欢迎来到人工智能时代</p>
-          <p mt-1 op-60>验证邮箱以获取免费额度</p>
+          <p mt-1 op-60>验证邮箱开始使用</p>
         </Show>
       </div>
       <div class="flex items-center">
         <Show when={isLogin() && user().nickname}>
           <p mt-1 op-60>
-            Hi,{user().nickname} 剩余额度{user().times}次
+            Hi,{user().nickname} 剩余额度{user().word}字
             <span onClick={() => { setShowCharge(true) }} class="border-1 px-2 py-1 ml-2 rounded-md transition-colors bg-slate/20 cursor-pointer hover:bg-slate/50">充值</span>
           </p>
         </Show>
@@ -287,15 +288,6 @@ export default () => {
       </Show>
 
       <Show when={isLogin()}>
-        <Show when={messageList().length === 0}>
-          <div onClick={randQuestion}>
-            <span class="mt-2 inline-flex items-center justify-center gap-1 text-sm  bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50">
-              <IconRand />
-              <span>随便问问</span>
-            </span>
-          </div>
-        </Show>
-
         <SystemRoleSettings
           canEdit={() => messageList().length === 0}
           systemRoleEditing={systemRoleEditing}

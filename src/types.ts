@@ -13,6 +13,7 @@ export interface User {
   email: string
   nickname: string
   times: number
+  word: number
   token: string
 }
 export interface ErrorMessage {

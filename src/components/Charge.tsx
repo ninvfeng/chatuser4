@@ -45,6 +45,7 @@ export default (props: Props) => {
       },
       body: JSON.stringify({
         token: localStorage.getItem('token'),
+        wallet_type:'word',
         price,
       }),
     })
@@ -96,17 +97,17 @@ export default (props: Props) => {
       <div>
         <Show when={!url()}>
           <span class="text-sm">
-            请选择充值金额,充值的次数一直有效
+            请选择充值金额, GPT4按字数计费(注意!不是次数)
           </span>
-          <div class="flex space-x-2">
-            <button onClick={() => { getPaycode(1) }} class="w-1/3 h-12 mt-2 px-4 py-2 bg-slate bg-op-15 hover:bg-op-20 rounded-sm">
-              1元60次
-            </button>
+          <div class="flex space-x-2 text-sm">
             <button onClick={() => { getPaycode(5) }} class="w-1/3 h-12 mt-2 px-4 py-2 bg-slate bg-op-15 hover:bg-op-20 rounded-sm">
-              5元320次
+              5元<br />5000字
             </button>
             <button onClick={() => { getPaycode(10) }} class="w-1/3 h-12 mt-2 px-4 py-2 bg-slate bg-op-15 hover:bg-op-20 rounded-sm">
-              10元650次
+              10元<br />10500字
+            </button>
+            <button onClick={() => { getPaycode(20) }} class="w-1/3 h-12 mt-2 px-4 py-2 bg-slate bg-op-15 hover:bg-op-20 rounded-sm">
+              20元<br />22000字
             </button>
           </div>
         </Show>
